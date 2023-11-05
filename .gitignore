@@ -1,0 +1,11 @@
+# Ctags
+tags
+
+# Markdown
+*.md
+
+# Object files
+*.o
+
+# Binary
+output
