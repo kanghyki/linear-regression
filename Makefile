@@ -1,23 +1,24 @@
 # **************************************************
 # * TARGET NAME                                    *
 # **************************************************
-NAME = output
+NAME := train
 
 # **************************************************
 # * SOURCE/INCLUDE                                 *
 # **************************************************
-INC_PATH = ./inc
-SRC_PATH = ./src
-SRC = main.cpp
-SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
-OBJS = $(SRCS:.cpp=.o)
+INC_PATH := ./inc
+SRC_PATH := ./src
+SRC := main.cpp
+SRCS := $(addprefix $(SRC_PATH)/, $(SRC))
+OBJS := $(SRCS:.cpp=.o)
+
 
 # **************************************************
 # * VARIABLE                                       *
 # **************************************************
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11
-CPPFLAGS = -I $(INC_PATH)
+CXX := c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++11
+CPPFLAGS := -I $(INC_PATH)
 
 # **************************************************
 # * RULE                                           *
