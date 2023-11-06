@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
   std::string filename = "result.csv";
   std::ofstream file_out(filename, std::ofstream::out | std::ofstream::trunc);
   if (!file_out.good()) std::cerr << "File written error occured\n";
-  file_out << "weight, bias\n";
+  file_out << "weight,bias\n";
   file_out << weight << "," << bias << "\n";
   file_out.close();
 

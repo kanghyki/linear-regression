@@ -52,10 +52,7 @@ std::vector<std::string> FileReader::split(std::string& s, std::string delim) {
   while (pos < s.length()) {
     npos = s.find(delim, pos);
     if (npos == -1) npos = s.length();
-    if (npos - pos > 0) {
-      ret.push_back(s.substr(pos, npos - pos));
-      this->trim(ret.back());
-    }
+    if (npos - pos > 0) ret.push_back(s.substr(pos, npos - pos));
     pos = npos + delim.length();
   }
 
