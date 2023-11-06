@@ -8,4 +8,8 @@ tags
 *.o
 
 # Binary
-output
+model
+training
+
+# model
+result
