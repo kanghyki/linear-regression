@@ -58,7 +58,7 @@ double pd_weight(std::vector<std::pair<int, int>>& data, double weight, double b
   for (const std::pair<int, int>& p: data)
     sum += ((pow(p.first, 2)) * weight) + (p.first * bias) - (p.first * p.second);
   sum *= 2;
-  sum /= static_cast<double>(data.size());
+  sum /= data.size();
 
   return sum;
 }
@@ -69,7 +69,7 @@ double pd_bias(std::vector<std::pair<int, int>>& data, double weight, double bia
   for (const std::pair<int, int>& p: data)
     sum += (p.first * weight) - p.second + bias;
   sum *= 2;
-  sum /= static_cast<double>(data.size());
+  sum /= data.size();
 
   return sum;
 }
