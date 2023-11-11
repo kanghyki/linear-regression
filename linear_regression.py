@@ -9,7 +9,7 @@ class linear_regression:
         self.bias = 0.0
         self.learning_rate = 0.01
         self.epoch = 1000
-        self.m = 0
+        self.number_of_data = 0
         self.x = []
         self.y = []
 
@@ -20,7 +20,7 @@ class linear_regression:
             for row in reader:
                 self.x.append(float(row[0]))
                 self.y.append(float(row[1]))
-                self.m += 1
+                self.number_of_data += 1
 
     def save_model_to_csv(self, file_name):
         with open(file_name, "w") as csvfile:
@@ -41,8 +41,8 @@ class linear_regression:
         y = self.normalize_data(self.y)
 
         for _ in range(self.epoch):
-            tmp_weight = (self.learning_rate * (1 / self.m) * self.sigma(self.diff_weight, x, y))
-            tmp_bias = (self.learning_rate * (1 / self.m) * self.sigma(self.diff_bias, x, y))
+            tmp_weight = (self.learning_rate * (1 / self.number_of_data) * self.sigma(self.diff_weight, x, y))
+            tmp_bias = (self.learning_rate * (1 / self.number_of_data) * self.sigma(self.diff_bias, x, y))
             self.weight -= tmp_weight
             self.bias -= tmp_bias
 
@@ -52,7 +52,7 @@ class linear_regression:
 
     def sigma(self, fn, x, y):
         sum = 0.0
-        for i in range(self.m):
+        for i in range(self.number_of_data):
             sum += fn(x[i], y[i])
         return sum
 
