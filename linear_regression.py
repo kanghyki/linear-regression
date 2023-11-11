@@ -41,9 +41,14 @@ class linear_regression:
         y = self.normalize_data(self.y)
 
         for _ in range(self.epoch):
-            tmp_weight = (self.sigma(self.diff_weight, x, y) * self.learning_rate / self.m)
-            self.bias -= (self.sigma(self.diff_bias, x, y) * self.learning_rate / self.m)
+            tmp_weight = (self.learning_rate * (1 / self.m) * self.sigma(self.diff_weight, x, y))
+            tmp_bias = (self.learning_rate * (1 / self.m) * self.sigma(self.diff_bias, x, y))
             self.weight -= tmp_weight
+            self.bias -= tmp_bias
+
+        loss = self.sigma(self.loss, x, y)
+        print("loss: %f [%f%%]" % (loss, (1 - loss) * 100))
+
 
     def sigma(self, fn, x, y):
         sum = 0.0
@@ -59,6 +64,9 @@ class linear_regression:
 
     def diff_bias(self, x, y):
         return (self.hypothesis(x) - y)
+
+    def loss(self, x, y):
+        return (self.hypothesis(x) - y) ** 2
 
     def show_graph(self):
         plt.xlabel("X axis (variable)")
@@ -76,7 +84,7 @@ class linear_regression:
 
 try:
     lr = linear_regression()
-    lr.read_data_from_csv("test.csv")
+    lr.read_data_from_csv("data.csv")
     lr.epoch = 10000
     lr.learning_rate = 0.01
     lr.train_model()
